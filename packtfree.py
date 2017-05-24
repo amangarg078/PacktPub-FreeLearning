@@ -16,7 +16,7 @@ from celery.schedules import crontab
 from celery.task import periodic_task
 import os
 
-REDIS_URL =  'redis://redis-15891.c11.us-east-1-3.ec2.cloud.redislabs.com:15891'
+REDIS_URL =  'redis://localhost'
 app = Celery('packtfree', broker=REDIS_URL)
 
 def parse_html(html_source):
@@ -36,8 +36,8 @@ def send_email_notification(email_data):
     """
     Send email notification
     """
-    FROM_EMAIL = "amangarg.packt@gmail.com"
-    TO_EMAIL = "amangarg078@gmail.com"
+    FROM_EMAIL = ""
+    TO_EMAIL = ""
 
     # Create message container - the correct MIME type is multipart/alternative.
     msg = MIMEMultipart('alternative')
@@ -56,8 +56,8 @@ def send_email_notification(email_data):
     msg.attach(part2)
 
     server = smtplib.SMTP('smtp.gmail.com:587')
-    login = "amangarg.packt@gmail.com"
-    password = "packtfree"
+    login = "" #email to FROM_EMAIL
+    password = "" #password to FROM_EMAIL
 
     server.starttls()
     server.login(login,password)
@@ -72,8 +72,8 @@ def claim_free_ebook():
     """
 
     URL = "https://www.packtpub.com/packt/offers/free-learning"
-    USERNAME = "amangarg078@gmail.com"
-    PASSWORD = "cooldude123"
+    USERNAME = "" #Username for Packt Account
+    PASSWORD = "" #Password for Packt Account
 
     options = webdriver.ChromeOptions()
     options.add_argument("--start-maximized")
