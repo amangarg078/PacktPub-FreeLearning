@@ -16,7 +16,7 @@ from celery.schedules import crontab
 from celery.task import periodic_task
 import os
 
-REDIS_URL =  os.environ['REDIS_URL']
+REDIS_URL =  'redis://redis-15891.c11.us-east-1-3.ec2.cloud.redislabs.com:15891'
 app = Celery('packtfree', broker=REDIS_URL)
 
 def parse_html(html_source):
