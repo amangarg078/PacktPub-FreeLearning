@@ -1,0 +1,1 @@
+worker: celery -A packtfree worker -B --loglevel=info
